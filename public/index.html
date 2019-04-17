@@ -145,27 +145,29 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-2019-03-22" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-node-express-vue-跨域问题" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/22/2019-03-22/">2019/03/22</a>
+      <a class="article-title" href="/2019/04/17/node-express-vue-跨域问题/">node-express vue 跨域问题</a>
     </h1>
   
 
         
-        <a href="/2019/03/22/2019-03-22/" class="archive-article-date">
-  	<time datetime="2019-03-22T09:11:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-22</time>
+        <a href="/2019/04/17/node-express-vue-跨域问题/" class="archive-article-date">
+  	<time datetime="2019-04-17T06:27:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>你结婚的时候，我希望自己能不知道</p>
+        <p>部分总结：<br>1:跨域问题的出现是浏览器的一种安全策略，服务器与服务器之间是不存在的<br>2: vue 前端post请求 在服务端被解析成options请求的原因 是报文变成了OPTION包，而不是POST请求报文。<br>这是跨域访问的一种安全检查机制，需要在前端设置下请求的header，常见的是<br>{<br>‘Content-Type’:’application/x-www-form-urlencoded’<br>},</p>
+<p>3:node-express 框架下允许跨域的方案<br>a: 在每个请求的res下设置header信息<br>res.header(‘Access-Control-Allow-Origin’, ‘*’);<br>res.header(‘Access-Control-Allow-Methods’, ‘POST, GET, PUT, PATCH, OPTIONS, DELETE’);<br>res.header(‘Access-Control-Allow-Headers’, ‘origin, content-type’);<br>b:整体在app中设置app.all  这个方案经测试，没起效果<br>c:使用cors<br>var cors = require(‘cors’);<br>app.use(cors());</p>
+<p>4:跨域问题 还是需要服务端配合解决的，前端需要注意你request中header的部分属性设置</p>
 
       
 
@@ -178,7 +180,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/22/2019-03-22/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/17/node-express-vue-跨域问题/">展开全文 >></a>
         </p>
       
 
